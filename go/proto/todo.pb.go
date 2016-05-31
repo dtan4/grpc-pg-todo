@@ -122,7 +122,7 @@ func RegisterTodoServer(s *grpc.Server, srv TodoServer) {
 	s.RegisterService(&_Todo_serviceDesc, srv)
 }
 
-func _Todo_AddTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Todo_AddTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Task)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -134,7 +134,7 @@ func _Todo_AddTask_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return out, nil
 }
 
-func _Todo_ListTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error) (interface{}, error) {
+func _Todo_ListTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
