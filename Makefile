@@ -16,6 +16,9 @@ deps:
 generate-go:
 	protoc --go_out=plugins=grpc:./go/proto $(SERVICE_FILE)
 
+generate-ruby:
+	protoc --ruby_out=ruby/lib --grpc_out=ruby/lib --plugin=protoc-gen-grpc=`which grpc_ruby_plugin` $(SERVICE_FILE)
+
 run-pg:
 	@docker run \
 	  -d \
