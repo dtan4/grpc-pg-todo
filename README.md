@@ -1,6 +1,8 @@
 # TODO application sample w/ gRPC + PostgreSQL
 
-## Protocol Buffers
+## How to develop
+
+### Protocol Buffers
 
 On Mac:
 
@@ -8,7 +10,7 @@ On Mac:
 $ brew install protobuf --devel
 ```
 
-## PostgreSQL
+### PostgreSQL
 
 Run PostgreSQL Docker container:
 
@@ -23,7 +25,7 @@ Create `grpc_pg_todo` database:
 CREATE DATABASE grpc_pg_todo;
 ```
 
-## Golang
+### Golang
 
 [grpc / gRPC Basics - Go](http://www.grpc.io/docs/tutorials/basic/go.html)
 
@@ -50,7 +52,7 @@ $ bin/server &
 $ bin/client
 ```
 
-## Ruby
+### Ruby
 
 [grpc / gRPC Basics - Ruby](http://www.grpc.io/docs/tutorials/basic/ruby.html)
 
@@ -78,3 +80,7 @@ Start server & client:
 $ bundle exec bin/server &
 $ bundle exec bin/client
 ```
+
+## License
+
+[MIT License](LICENSE)
