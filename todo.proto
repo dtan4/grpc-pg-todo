@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+service Todo {
+  rpc AddTask(Task) returns (Tasks) {}
+  rpc ListTasks(ListRequest) returns (Tasks) {}
+}
+
+message ListRequest {
+  optional string title = 1;
+}
+
+message Task {
+  string title = 1;
+  string description = 2;
+}
+
+message Tasks {
+  repeated Task tasks = 1;
+}
