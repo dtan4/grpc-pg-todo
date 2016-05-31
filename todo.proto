@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 service Todo {
-  rpc AddTask(Task) returns (Tasks) {}
+  rpc AddTask(Task) returns (Task) {}
   rpc ListTasks(ListRequest) returns (Tasks) {}
 }
 
