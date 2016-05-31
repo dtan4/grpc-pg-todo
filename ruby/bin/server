@@ -14,12 +14,13 @@ DB_NAME = "grpc_pg_todo"
 DB_PASSWORD = "password"
 DB_PORT = "5432"
 DB_USER = "postgres"
-PORT = "0.0.0.0:50051"
+ADDR = "0.0.0.0:50051"
 
 conn = PG.connect("user=#{DB_USER} password=#{DB_PASSWORD} host=#{DB_HOST} port=#{DB_PORT} dbname=#{DB_NAME} sslmode=disable")
+conn.exec("CREATE TABLE IF NOT EXISTS todos (title varchar(50), description text)")
 
 server = GRPC::RpcServer.new
-server.add_http2_port(PORT, :this_port_is_insecure)
+server.add_http2_port(ADDR, :this_port_is_insecure)
 puts "=====> Server started."
 server.handle(TodoServer.new(conn))
 server.run_till_terminated
