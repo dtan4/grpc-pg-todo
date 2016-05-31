@@ -1,10 +1,14 @@
-hash: 3c18cdbf5f80b54a949749e228362986ffe335b34136a87ae02c228c7368d6fb
-updated: 2016-05-31T16:41:16.821572666+09:00
+hash: 4200a68cddd9ce24ad1fc9e9265738411e25913d270177d6fbd379b84c87e4d9
+updated: 2016-05-31T16:45:06.864289565+09:00
 imports:
 - name: github.com/golang/protobuf
   version: 9e6977f30c91c78396e719e164e57f9287fff42c
   subpackages:
   - proto
+- name: github.com/lib/pq
+  version: ee1442bda7bd1b6a84e913bdb421cb1874ec629d
+  subpackages:
+  - oid
 - name: golang.org/x/net
   version: 7553b97266dcbbf78298bd1a2b12d9c9aaae5f40
   subpackages:
