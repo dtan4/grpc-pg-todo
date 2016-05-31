@@ -6,7 +6,7 @@ service Todo {
 }
 
 message ListRequest {
-  optional string title = 1;
+  string title = 1;
 }
 
 message Task {
