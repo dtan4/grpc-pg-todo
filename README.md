@@ -17,7 +17,7 @@ $ make run-pg
 $ psql postgres://postgres:password@localhost:5432
 ```
 
-Create `grpc_pg_todo` table:
+Create `grpc_pg_todo` database:
 
 ```sql
 CREATE DATABASE grpc_pg_todo;
