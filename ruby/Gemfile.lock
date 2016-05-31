@@ -1,3 +1,11 @@
+PATH
+  remote: .
+  specs:
+    grpc-pg-todo (0.1.0)
+      google-protobuf (= 3.0.0.alpha.5.0.5.1)
+      grpc (~> 0.14.1)
+      pg (~> 0.18.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -25,6 +33,7 @@ GEM
     multi_json (1.12.1)
     multipart-post (2.0.0)
     os (0.9.6)
+    pg (0.18.4)
     signet (0.7.2)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -35,8 +44,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  google-protobuf (= 3.0.0.alpha.5.0.5.1)
-  grpc (~> 0.14.1)
+  bundler (~> 1.7)
+  grpc-pg-todo!
 
 BUNDLED WITH
    1.12.4

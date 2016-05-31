@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+this_dir = File.expand_path(File.dirname(__FILE__))
+lib_dir = File.join(this_dir, "..", "lib")
+$LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
+
+require "grpc"
+require "pg"
+require "todo_services"
+require "todo_server"
+
+DB_HOST = "localhost"
+DB_NAME = "grpc_pg_todo"
+DB_PASSWORD = "password"
+DB_PORT = "5432"
+DB_USER = "postgres"
+PORT = "0.0.0.0:50051"
+
+conn = PG.connect("user=#{DB_USER} password=#{DB_PASSWORD} host=#{DB_HOST} port=#{DB_PORT} dbname=#{DB_NAME} sslmode=disable")
+
+server = GRPC::RpcServer.new
+server.add_http2_port(PORT, :this_port_is_insecure)
+puts "=====> Server started."
+server.handle(TodoServer.new(conn))
+server.run_till_terminated
