@@ -36,7 +36,30 @@ func (s *todoServer) AddTask(ctx context.Context, task *pb.Task) (*pb.Task, erro
 }
 
 func (s *todoServer) ListTasks(ctx context.Context, req *pb.ListRequest) (*pb.Tasks, error) {
-	var tasks []*pb.Task
+	var (
+		tasks       []*pb.Task
+		title       string
+		description string
+	)
+
+	rows, err := s.DB.Query("SELECT title, description FROM todos")
+
+	if err != nil {
+		return nil, err
+	}
+
+	for rows.Next() {
+		err = rows.Scan(&title, &description)
+
+		if err != nil {
+			return nil, err
+		}
+
+		tasks = append(tasks, &pb.Task{
+			Title:       title,
+			Description: description,
+		})
+	}
 
 	return &pb.Tasks{
 		Tasks: tasks,
@@ -67,5 +90,6 @@ func main() {
 		DB: db,
 	})
 
+	fmt.Println("=====> Server started.")
 	s.Serve(lis)
 }
