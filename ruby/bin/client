@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+
+this_dir = File.expand_path(File.dirname(__FILE__))
+lib_dir = File.join(this_dir, "..", "lib")
+$LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
+
+require "grpc"
+require "todo_client"
+
+USAGE = <<-EOS
+usage:
+  client add <title> <description>
+  client list
+EOS
+
+ADDR = "localhost:50051"
+
+title, description = "", ""
+
+if ARGV.length < 1
+  puts USAGE
+  exit 1
+end
+
+command = ARGV[0]
+
+if command == "add"
+  if ARGV.length != 3
+    puts USAGE
+    exit 1
+  end
+
+  title = ARGV[1]
+  description = ARGV[2]
+end
+
+stub = Todo::Stub.new(ADDR, :this_channel_is_insecure)
+client = TodoClient.new(stub)
+
+case command
+when "add"
+  client.add(title, description)
+  puts "Suceeded!"
+
+when "list"
+  tasks = client.list
+
+  tasks.each do |task|
+    puts "#{task.title}: #{task.description}"
+  end
+else
+  puts USAGE
+  exit 1
+end
