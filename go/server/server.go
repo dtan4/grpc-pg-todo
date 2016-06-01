@@ -35,7 +35,7 @@ func (s *todoServer) AddTask(ctx context.Context, task *pb.Task) (*pb.Task, erro
 	return task, nil
 }
 
-func (s *todoServer) ListTasks(ctx context.Context, req *pb.ListRequest) (*pb.Tasks, error) {
+func (s *todoServer) ListTasks(ctx context.Context, req *pb.Void) (*pb.Tasks, error) {
 	var (
 		tasks       []*pb.Task
 		title       string

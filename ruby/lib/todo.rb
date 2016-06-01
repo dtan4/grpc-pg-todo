@@ -4,8 +4,7 @@
 require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
-  add_message "ListRequest" do
-    optional :title, :string, 1
+  add_message "Void" do
   end
   add_message "Task" do
     optional :title, :string, 1
@@ -16,6 +15,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
 end
 
-ListRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("ListRequest").msgclass
+Void = Google::Protobuf::DescriptorPool.generated_pool.lookup("Void").msgclass
 Task = Google::Protobuf::DescriptorPool.generated_pool.lookup("Task").msgclass
 Tasks = Google::Protobuf::DescriptorPool.generated_pool.lookup("Tasks").msgclass

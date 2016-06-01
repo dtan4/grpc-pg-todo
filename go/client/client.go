@@ -64,7 +64,7 @@ func main() {
 		fmt.Println("Suceeded.")
 
 	case "list":
-		tasks, err := client.ListTasks(context.Background(), &pb.ListRequest{})
+		tasks, err := client.ListTasks(context.Background(), &pb.Void{})
 
 		if err != nil {
 			log.Fatal(err)

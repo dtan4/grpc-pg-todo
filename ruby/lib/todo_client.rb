@@ -11,7 +11,6 @@ class TodoClient
   end
 
   def list
-    req = ListRequest.new({title: ""})
-    @stub.list_tasks(req).tasks
+    @stub.list_tasks(Void.new).tasks
   end
 end

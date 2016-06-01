@@ -16,7 +16,7 @@ module Todo
     self.service_name = 'Todo'
 
     rpc :AddTask, Task, Task
-    rpc :ListTasks, ListRequest, Tasks
+    rpc :ListTasks, Void, Tasks
   end
 
   Stub = Service.rpc_stub_class
